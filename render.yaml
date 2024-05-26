@@ -1,22 +1,7 @@
-databases:
-  - name: mysitedb
-    plan: free
-    databaseName: mysite
-    user: mysite
-
 services:
   - type: web
     plan: free
-    name: server
+    name: mysite
     runtime: python
     buildCommand: "./server/build.sh"  # Updated path to build.sh
     startCommand: "python -m gunicorn server.asgi:application -k uvicorn.workers.UvicornWorker"
-    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: mysitedb
-          property: connectionString
-      - key: SECRET_KEY
-        generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
