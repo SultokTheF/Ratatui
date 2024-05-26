@@ -3,3 +3,4 @@ django
 djangorestframework
 flax
 jaxlib
+django-cors-headers
